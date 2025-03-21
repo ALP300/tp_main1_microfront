@@ -24,7 +24,7 @@ export default defineConfig({
   },
   output: {
     uniqueName: "appTwo", // Identificador único para este microfrontend
-    publicPath: "http://react-tp-site.s3-website-sa-east-1.amazonaws.com/", // Ruta pública para los archivos generados
+    publicPath: isDev ? "auto" : "http://react-tp-site.s3-website-sa-east-1.amazonaws.com/",
   },
   experiments: {
     css: true, // Habilita el soporte para CSS
@@ -74,7 +74,7 @@ export default defineConfig({
       name: "appTwo", // Nombre único de esta aplicación
       filename: "remoteEntry.js", // Nombre del archivo remoto
       remotes: {
-        components: "app1@http://react-site-components.s3-website-sa-east-1.amazonaws.com/remoteEntry.js", // Carga el microfrontend app1
+        components: "app1@http://localhost:4001/remoteEntry.js", // Carga el microfrontend app1
       },
       exposes: {}, // No expone ningún módulo (ya que es un consumidor)
       shared: {
